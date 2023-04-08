@@ -5,7 +5,7 @@ import { getfetch } from "./getFetchData"
 const Nav = () => {
     const [name, setname] = useState(null)
     useEffect(() => {
-        getfetch()
+        getfetch('/api/menu')
         .then(data => console.log(data))
     }, [])
 

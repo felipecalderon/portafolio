@@ -1,5 +1,10 @@
-export const getfetch = () => {
-    return fetch('/api/menu')
-        .then(res => res.json())
-        .then(data => data)
+import axios from "axios"
+
+export const getfetch = async (url) => {
+    try {
+        const res = await axios(url)
+        return res.data
+    } catch (error) {
+        console.log(error)
+    }
 }
