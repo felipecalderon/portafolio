@@ -3,9 +3,22 @@ export default function handler(req, res) {
         case 'GET': {
             return res.status(200).json([
                 {
-                    name: 'Inicio',
-                    link: '/'
+                    name: 'Mi historia',
+                    link: '/historia'
+                },
+                {
+                    name: 'Proyectos y Experiencias',
+                    link: '/experiencias'
+                },
+                {
+                    name: 'Habilidades',
+                    link: '/habilidades'
+                },
+                {
+                    name: 'Contacto',
+                    link: '/contacto'
                 }
+
             ])
         }
         default: {
