@@ -6,7 +6,7 @@ const Banner = () => {
           Felipe Calderón Espinoza
         </h2>
         <p className="text-gray-800 dark:text-white mt-3 text-lg text-center sm:mt-5 sm:text-xl sm:max-w-xl">
-          Desarrollador Web: React, Redux, NextJS, API, qJavascript, Wordpress
+          Desarrollador Web: React, Redux, NextJS, API, Javascript, Wordpress
         </p>
       </div>
     </div>
