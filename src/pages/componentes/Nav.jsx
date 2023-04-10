@@ -1,7 +1,5 @@
-'use client'
-
 import { useEffect, useState } from "react"
-import { getfetch } from "../getFetchData"
+import { getfetch } from "../../getFetchData"
 import Link from "next/link"
 const Nav = () => {
     const [nav, setNav] = useState(null)
