@@ -6,7 +6,7 @@ export default function Home() {
   <Layout>
     <Banner 
       titulo='Felipe Calderón Espinoza'
-      descripcion='Desarrollador Web: React, Redux, NextJS, API, Javascript, Wordpress'
+      descripcion='Colocar imagen destacada de fondo, podría ser un video ¿?.. escribir habilidades'
       />
     <BannerRotativo />
     <Banner 
