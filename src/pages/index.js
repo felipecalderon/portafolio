@@ -1,6 +1,8 @@
 import Banner from "./componentes/Banner";
 import BannerRotativo from "./componentes/BannerRotativo";
 import Layout from "./layout";
+import '../firebase.config'
+
 export default function Home() {
   return (
   <Layout>

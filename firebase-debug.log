@@ -1,0 +1,17 @@
+[debug] [2023-04-11T13:42:00.041Z] ----------------------------------------------------------------------
+[debug] [2023-04-11T13:42:00.043Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Felipe\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js help
+[debug] [2023-04-11T13:42:00.044Z] CLI Version:   11.25.3
+[debug] [2023-04-11T13:42:00.045Z] Platform:      win32
+[debug] [2023-04-11T13:42:00.045Z] Node Version:  v18.13.0
+[debug] [2023-04-11T13:42:00.046Z] Time:          Tue Apr 11 2023 09:42:00 GMT-0400 (hora estándar de Chile)
+[debug] [2023-04-11T13:42:00.046Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info]   To get help with a specific command, type firebase help [command_name]
+[info] 
+[debug] [2023-04-11T13:42:05.657Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\Felipe\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:564:17)
+    at process.processTimers (node:internal/timers:507:7)
+[error] 
+[error] Error: An unexpected error has occurred.
