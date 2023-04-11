@@ -14,7 +14,7 @@ const Nav = () => {
 
     if(!nav) return <LoaderNav />
     return (
-        <nav className="bg-gray-300 dark:bg-gray-900 shadow-lg">
+        <nav className="bg-gray-300 dark:bg-blue-950 shadow-lg">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
