@@ -12,16 +12,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-// async function createUser() {
-//     try {
-//       const user = { name: "John Doe", age: 30 };
-//       const usersRef = collection(db, "users");
-//       const docRef = await addDoc(usersRef, user);
-//       console.log("Documento creado con ID:", docRef.id);
-//     } catch (e) {
-//       console.error("Error al crear el documento:", e);
-//     }
-//   }
-
-// createUser()
+export const db = getFirestore(app);
