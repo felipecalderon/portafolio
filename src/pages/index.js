@@ -2,6 +2,7 @@ import Banner from "./componentes/Banner";
 import BannerRotativo from "./componentes/BannerRotativo";
 import Layout from "./layout";
 import '../firebase.config'
+import Proyectos from "./componentes/proyectos/Proyectos";
 
 export default function Home() {
   return (
@@ -11,10 +12,7 @@ export default function Home() {
       descripcion='Colocar imagen destacada de fondo, podría ser un video ¿?.. escribir habilidades'
       />
     <BannerRotativo />
-    <Banner 
-      titulo='Aquí pondré más info'
-      descripcion='Ya veré que coloco...'
-      />
+    <Proyectos />
   </Layout>
   )
 }

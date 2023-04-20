@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore'
 import {db} from '../../firebase.config'
 
 export default async function handler(req, res) {
@@ -7,10 +7,16 @@ export default async function handler(req, res) {
 
         case 'GET': {
             try {
-                const proyectos = await getDocs(coleccionProyectos)
+                const { nombre } = req.query;
+                let queryProyectos = coleccionProyectos;
+                if (nombre) {
+                queryProyectos = query(collection(db, "proyectos"), where("nombre", "array-contains", nombre));
+                }
+                const proyectos = await getDocs(queryProyectos)
                 const dataProyectos = proyectos.docs.map(proyecto => proyecto.data())
                 return res.status(200).json(dataProyectos)
             } catch (error) {
+                console.log(error);
                 return res.status(400).json('No pudimos traer los proyectos', error.message)
             }
         }
