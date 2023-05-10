@@ -1,5 +1,5 @@
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore'
-import {db} from '../../firebase.config'
+import { db } from '../../firebase.config'
 
 export default async function handler(req, res) {
     const coleccionProyectos = collection(db, "proyectos")
@@ -10,10 +10,15 @@ export default async function handler(req, res) {
                 const { nombre } = req.query;
                 let queryProyectos = coleccionProyectos;
                 if (nombre) {
-                queryProyectos = query(collection(db, "proyectos"), where("nombre", "array-contains", nombre));
+                queryProyectos = query(coleccionProyectos, where("nombre", ">=", nombre));
                 }
                 const proyectos = await getDocs(queryProyectos)
-                const dataProyectos = proyectos.docs.map(proyecto => proyecto.data())
+                const dataProyectos = proyectos.docs.map(proyecto => {
+                  const data = proyecto.data()
+                  const id = proyecto.id
+                  return { id, ...data }
+                })
+                if(dataProyectos.length === 0) return res.status(404).json(`No hay proyectos de nombre ${nombre}`)
                 return res.status(200).json(dataProyectos)
             } catch (error) {
                 console.log(error);
@@ -23,12 +28,13 @@ export default async function handler(req, res) {
 
         case 'POST': {
             try {
-                const {nombre, link, empresa, creacion, imagen} = req.body
-                if(!nombre || !link || !empresa || !creacion || !imagen) throw new Error("Faltan datos en body")
-                const proyectoRef = await addDoc(coleccionProyectos, {nombre, link, empresa, creacion, imagen})
-                return res.status(201).json(proyectoRef)
+              const { nombre, link, empresa, creacion } = req.body;
+              console.log(req.body);
+              if (!nombre || !link || !empresa || !creacion || !imagen) throw new Error('Faltan datos en body');
+              const proyectoRef = await addDoc(coleccionProyectos, { nombre, link, empresa, creacion, imagen });
+              return res.status(201).json(proyectoRef);
             } catch (error) {
-                return res.status(400).json({error})
+              return res.status(400).json({message: error.message});
             }
         }
 

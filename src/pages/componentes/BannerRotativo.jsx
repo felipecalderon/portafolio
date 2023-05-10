@@ -5,21 +5,36 @@ import redux from '../../../public/redux.svg'
 import wordpress from '../../../public/wordpress.svg'
 import woo from '../../../public/woo.svg'
 import anime from 'animejs';
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 const BannerRotativo = () => {
     const imgs = [woo, wordpress, next, react, redux]
     const ref = useRef(null);
+    const [rango, setRango] = useState(0)
 
+    const handleScroll = () => {
+        const elemento = ref.current;
+        const { scrollY, innerHeight } = window;
+        const { top, height } = elemento.getBoundingClientRect();
+    
+        const elementoCentrado = top + height / 2;
+        const pantallaCentrada = scrollY + innerHeight / 2;
+        
+        setRango(1-Math.abs(elementoCentrado - pantallaCentrada)/pantallaCentrada)
+        console.log(Math.abs(elementoCentrado - pantallaCentrada)/pantallaCentrada);
+      }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [])
     useEffect(() => {
         anime({
         targets: ref.current,
-        scale: 1.1,
-        direction: 'alternate',
-        loop: true,
-        easing: 'easeInOutQuad',
-        duration: 3000,
+        scale: rango,
+        direction: 'linear',
         });
-      }, []);
+        
+      }, [rango]);
     
     return (
       <div className="bg-gray-400 dark:bg-blue-950 py-6 overflow-hidden">

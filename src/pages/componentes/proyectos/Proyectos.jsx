@@ -1,6 +1,5 @@
 import Proyecto from "./Proyecto"
 
-
 export default function Proyectos(){
     const proyectos = [
         {id: 1},
@@ -8,7 +7,7 @@ export default function Proyectos(){
         {id: 3},
         {id: 4}
     ]
-    if(!proyectos) return <p>No hay proyectos</p>
+    if(!proyectos) return null
     return (
     <div className="bg-white dark:bg-gray-800 container mx-auto flex flex-wrap py-6">
         {
