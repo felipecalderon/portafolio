@@ -1,10 +1,10 @@
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore'
 import { db } from '../../firebase.config'
+import upload from '../../uploadImage'
 
 export default async function handler(req, res) {
     const coleccionProyectos = collection(db, "proyectos")
     switch (req.method) {
-
         case 'GET': {
             try {
                 const { nombre } = req.query;
@@ -28,8 +28,10 @@ export default async function handler(req, res) {
 
         case 'POST': {
             try {
+              upload(req, res, async (err) => {
+                if(err) console.log(err)
+              })
               const { nombre, link, empresa, creacion } = req.body;
-              console.log(req.body);
               if (!nombre || !link || !empresa || !creacion || !imagen) throw new Error('Faltan datos en body');
               const proyectoRef = await addDoc(coleccionProyectos, { nombre, link, empresa, creacion, imagen });
               return res.status(201).json(proyectoRef);
